@@ -27,6 +27,10 @@ public class MapperFactory {
 
     private static final boolean autoCommit = Boolean.TRUE;
 
+    //应用级别的变量
+    private static final SqlSessionFactory sqlSessionFactory = getStream();
+
+
     //初始化 资源和sqlSessionFactory
     private static SqlSessionFactory getStream(){
 
@@ -41,7 +45,6 @@ public class MapperFactory {
     private static SqlSession getSqlSession() {
 
         try {
-            SqlSessionFactory sqlSessionFactory = getStream();
 
             return sqlSessionFactory.openSession(autoCommit);
         } catch (Exception e) {
@@ -52,10 +55,9 @@ public class MapperFactory {
     }
 
     public static Object getMapper(Class mapperClass){
-        SqlSession sqlSession = null;
         try {
             //获取session
-            sqlSession = getSqlSession();
+            SqlSession sqlSession = getSqlSession();
 
             //第一种方法
             Object mapper = sqlSession.getMapper(mapperClass);

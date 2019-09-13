@@ -16,7 +16,7 @@ public class HelloServiceTest {
 	Logger logger = LoggerFactory.getLogger(HelloServiceTest.class);
 	@Test
 	public void testInsertHello(){
-		helloService.insertHello("hello lining");
+		helloService.insertHello("数据");
 	}
 
 	@Test
