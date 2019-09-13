@@ -5,6 +5,7 @@
 package com.lining.springboot.mybatis.interfaces;
 
 import com.lining.springboot.mybatis.entity.HelloWorld;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public interface HelloDAO {
 //    @Select("select * from helloworld where id = #{id}")
     HelloWorld selectHello(long id);
 
-    void insertHello(String name);
+    void insertHello(@Param("name") String name);
 
     List<HelloWorld> queryAllHello();
 }
