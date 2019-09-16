@@ -26,17 +26,22 @@ public class HelloService {
     //拿到mapper
     private HelloDAO helloDAO = (HelloDAO)MapperFactory.getMapper(HelloDAO.class);
 
+    //插入数据
     public void insertHello(String name){
         logger.info("insertHello name is " + name);
 
-        //插入数据
         helloDAO.insertHello(name);
-
     }
 
+    //查全量数据
     public List<HelloWorld> queryAllHello() {
         List<HelloWorld> helloWorlds = helloDAO.queryAllHello();
         logger.info("queryAllHello " + JSON.toJSONString(helloWorlds));
         return helloWorlds;
+    }
+
+    //根据id查
+    public HelloWorld selectById(long id){
+        return helloDAO.selectHello(id);
     }
 }
